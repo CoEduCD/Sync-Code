@@ -1,16 +1,22 @@
-import React from 'react';
+"use client"
+import React, { useEffect } from 'react';
 import styles from './page.module.scss'
-import Header from '../../src/component/header'
-import '../../src/style/global.scss'
-import AddDocument from '../../src/component/addDocument';
-import DocumentList from '@/component/documentLIst';
+import Header from '@/component/organisms/header'
+import '@/style/global.scss'
+import AddDocument from '@/component/molcules/addDocument';
+import DocumentList from '@/component/organisms/documentLIst';
+import { RecoilRoot, useRecoilValue } from 'recoil';
+import { getUserFilesList } from '@/api/file/api';
+import { user_id } from '@/recoil/userId';
 
 export default function Home() {
   return (
-    <main className={styles.container}>
-      <Header/>
-      <AddDocument/>  
-      <DocumentList/>
-    </main>
+    <RecoilRoot>
+      <main className={styles.container}>
+        <Header/>
+        <AddDocument/>  
+        <DocumentList/>
+      </main>
+    </RecoilRoot>
   )
 }

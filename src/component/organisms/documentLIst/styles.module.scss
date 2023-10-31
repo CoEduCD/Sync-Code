@@ -1,0 +1,12 @@
+.container{
+    width: 100vw;
+    height: 100%;
+    color:black;
+    overflow: auto;
+}
+.headerContainer{
+    display: flex;
+    transform: translateY(20px);
+    justify-content: center;
+    font-weight: 300;
+}
