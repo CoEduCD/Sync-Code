@@ -6,25 +6,33 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 import { postUserLoginInfo } from '@/api/user/api';
 import { SetterOrUpdater, useRecoilState } from 'recoil';
 import { user_id } from '@/recoil/userId';
-import { UserId } from '@/@type/user/interface';
+import Link from 'next/link';
 const Header = ()=>{
     const { data: session } = useSession();
     const [showUserBox, setShowUserBox] = useState<boolean>(false);
+    const [onLogin, setOnLogin] = useState<boolean>(false);
     const [userId, setUserId] = useRecoilState(user_id);
     useEffect(()=>{
         if (session){
             postUserLoginInfo(session, setUserId);
         }
-    },[session])
+    },[onLogin])
+    
+    const handleLogin = ()=>{
+        setOnLogin(!onLogin);
+        signIn("google", {callbackUrl: "/" });
+    }
     return(
     <div className={styles.container}>
+        <Link href={`/`}>
             <Image
-                src="/logo.jpg"
-                width={100}
-                height={100}
-                style={{ objectFit: 'cover', marginLeft:20}}
-                alt="Sync-Codes"
-            />
+                    src="/logo.jpg"
+                    width={100}
+                    height={100}
+                    style={{ objectFit: 'cover', marginLeft:20}}
+                    alt="Sync-Codes"
+                />
+        </Link>
         {
             session ? 
             <>
@@ -55,7 +63,7 @@ const Header = ()=>{
                 }
             </>:
             <div
-                onClick={() => signIn("google", {callbackUrl: "/" })} 
+                onClick={() => handleLogin()} 
                 className={styles.loginBox}>
                     <Image
                         src="/GoogleLogo.png"

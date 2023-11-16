@@ -9,22 +9,9 @@ export const postUserLoginInfo = async (session: Session, setUserId:SetterOrUpda
     }
     try {
       const res= await fetchFromApi('POST', '/user', data);
-      console.log(res.data);
       setUserId(res.data)
+      console.log(data)
     } catch (e) {
       console.log(e);
     }
 }
-// export const postUserLoginInfo = async (user:string, email: string, setUserId:SetterOrUpdater<UserId>): Promise<void> => {
-//     let data = {
-//         "name": user,
-//         "email": email,
-//     }
-//     try {
-//       const res= await fetchFromApi('POST', '/user', data);
-//       console.log(res.data);
-//       setUserId(res.data)
-//     } catch (e) {
-//       console.log(e);
-//     }
-// }

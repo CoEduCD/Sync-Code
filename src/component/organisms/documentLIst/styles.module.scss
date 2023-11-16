@@ -3,10 +3,7 @@
     height: 50%;
     color:black;
     overflow: auto;
-}
-.headerContainer{
-    display: flex;
-    transform: translateY(20px);
     justify-content: center;
-    font-weight: 300;
+    display: flex;
+    padding: 20px
 }

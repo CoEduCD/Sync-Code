@@ -1,39 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.scss'
 import Image from "next/image";
 import Link from 'next/link';
 import { createNewFile } from '@/api/file/api';
 import { useRecoilValue } from 'recoil';
 import { user_id } from '@/recoil/userId';
+import { generateFileIdentifier } from '@/utils/fileIdentifierHash';
 const AddDocument = ()=>{
     const userId = useRecoilValue(user_id);
     return(
     <div className={styles.container}>
         <h1 className={styles.text}>👩🏻‍💻 새 작성 시작</h1>
         <div className={styles.imageContainer}>
-            <Link
-                onClick={()=>
-                    (typeof (userId) === "number")?
-                    createNewFile(userId):null
-                }
-                className={styles.imageBox} 
-                href={{
-                pathname: '/edit-page',
-            }}>
+                <Link
+                    className={styles.imageBox}
+                    href= {`file/c/${generateFileIdentifier(userId, new Date())}`}
+                >
                     <Image
                         src="/Cimage.jpeg"
                         width={100}
                         height={100}
-                        style={{ objectFit: 'cover'}}
+                        style={{ objectFit: 'cover' }}
                         alt="C언어"
                     />
                     <div className={styles.startButton}><span>C언어</span>로 시작하기</div>
-            </Link>
-            <Link
-                className={styles.imageBox} 
-                href={{
-                pathname: '/edit-page',
-            }}>
+                </Link>
+                <Link
+                    className={styles.imageBox}
+                    href= {`file/python/${generateFileIdentifier(userId, new Date())}`}
+                >
                     <Image
                         src="/PythonImage.jpeg"
                         width={100}
@@ -44,10 +39,9 @@ const AddDocument = ()=>{
                     <div className={styles.startButton}><span>파이썬</span>으로 시작하기</div>
                 </Link>
                 <Link
-                    className={styles.imageBox} 
-                    href={{
-                    pathname: '/edit-page',
-                }}>
+                    className={styles.imageBox}
+                    href= {`file/javascript/${generateFileIdentifier(userId, new Date())}`}
+                >
                     <Image
                         src="/JavaScriptImage.svg"
                         width={100}
