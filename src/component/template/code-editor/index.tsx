@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+"use client"
+import React, { useEffect, useState, useRef } from 'react'
 import { Editor } from '@monaco-editor/react'
 import {useRecoilValue } from 'recoil'
 import Image from 'next/image'
@@ -6,16 +7,15 @@ import styles from './styles.module.scss'
 import { usePathname, useRouter } from 'next/navigation'
 import { user_id } from '@/recoil/userId'
 import { createNewFile } from '@/api/file/api'
-
 export const CodeEditPage = ()=>{
     const path = usePathname().split('/');
     const userId = useRecoilValue(user_id);
+    const [codeData, setCodeData] = useState("");
     useEffect(()=>{
         if (typeof userId === "number"){
             createNewFile(Number(userId), path[2],path[3])
         } 
     },[userId])
-
     return(
     <div style={{width: "100vw", height: '85vh', paddingTop: 10, backgroundColor:'black', display:'flex'}}>
         <Editor       
@@ -23,6 +23,13 @@ export const CodeEditPage = ()=>{
             width="70%"
             // language="javascript"
             language={path[2]}
+            value={codeData}
+            onChange={(value)=>{
+                if (value!==undefined){
+                    setCodeData(value)
+                }
+            }
+            }
             theme='vs-dark'
             options={{
                 minimap: {
