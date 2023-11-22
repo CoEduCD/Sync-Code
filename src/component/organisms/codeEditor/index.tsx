@@ -43,7 +43,7 @@ export const CodeEditor = ({codeData, setCodeData}:CodeEditorProps)=>{
                 enabled: true,
                 },
                 fontSize: 15,
-                cursorStyle: "black",
+                // cursorStyle: "black",
                 wordWrap: "on",
             }}
         />

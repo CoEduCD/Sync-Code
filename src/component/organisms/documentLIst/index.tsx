@@ -46,7 +46,7 @@ const DocumentList = ()=>{
                         <td>{item.createdTime.substring(0,10)}</td>
                         <td>
                             <button
-                             className={styles.deleteButton}
+                             className={styles.modifyButton}
                              onClick={async() => {
                                 Promise.all([setCurrentFileMode("modify"),
                                 setCurrentFileInfo(item),]).then(()=>router.push(`file/${item.language}/${item.fileHash}`));
