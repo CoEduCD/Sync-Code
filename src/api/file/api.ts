@@ -25,9 +25,15 @@ export const getUserFilesList = async (userId:number,setFileList: React.Dispatch
     }
 }
 
-export const modifyFileContents = async (userId:number): Promise<void> => {
+export const modifyFileContents = async (fileInfo: CodeFile, codeData: string): Promise<void> => {
   try {
-    const res= await fetchFromApi('PATCH', `/file/edit`);
+    let data = {
+      "fileId": fileInfo.fileId,
+      "fileName": fileInfo.fileName,
+      "language": fileInfo.language,
+      "fileDetail": codeData
+    }
+    const res = await fetchFromApi('PATCH', `/file/edit`, data);
     console.log(res.data);
   } catch (e) {
     console.log(e);

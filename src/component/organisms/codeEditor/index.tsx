@@ -1,25 +1,38 @@
+"use client"
+import { modifyFileContents } from '@/api/file/api';
+import { useDebounce } from '@/hooks/useDebounce';
+import { fileInfo } from '@/recoil/fileInfo';
+import { fileMode } from '@/recoil/fileMode';
+import { user_id } from '@/recoil/userId';
 import { Editor } from '@monaco-editor/react';
 import { usePathname } from 'next/navigation';
-import path from 'path';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 interface CodeEditorProps {
     codeData: string;
     setCodeData: React.Dispatch<React.SetStateAction<string>>
 }
 export const CodeEditor = ({codeData, setCodeData}:CodeEditorProps)=>{
+    const [currentFileInfo, setCurrentFileInfo] = useRecoilState(fileInfo);
+    const [currentFileMode, setCurrentFileMode] = useRecoilState(fileMode);
     const path = usePathname().split('/');
+    const debouncedCode = useDebounce(codeData, 300);
+    useEffect(()=>{
+        if (currentFileMode === "modify" && currentFileInfo!==undefined){
+            modifyFileContents(currentFileInfo, codeData)
+            console.log(debouncedCode)
+        }
+    },[debouncedCode])
     return(
     <>
         <Editor       
             height='100%'
             width="70%"
-            // language="javascript"
             language={path[2]}
             value={codeData}
-            // defaultValue={currentFileInfo.fileDetail}
+            defaultValue={currentFileInfo!==undefined?currentFileInfo.fileDetail:""}
             onChange={(value)=>{
                 if (value!==undefined) {
-                    console.log(value)
                     setCodeData(value)
                 }
             }

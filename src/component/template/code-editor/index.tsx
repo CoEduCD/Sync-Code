@@ -11,7 +11,6 @@ import { CodeEditor } from '@/component/organisms/codeEditor'
 export const CodeEditPage = ()=>{
     const path = usePathname().split('/');
     const userId = useRecoilValue(user_id);
-    const [currentFileInfo, setCurrentFileInfo] = useRecoilState(fileInfo);
     const [currentFileMode, setCurrentFileMode] = useRecoilState(fileMode);
     const [codeData, setCodeData] = useState<string>("");
     useEffect(()=>{

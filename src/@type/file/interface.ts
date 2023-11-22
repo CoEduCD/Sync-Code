@@ -1,4 +1,5 @@
 export interface CodeFile{
+    userId: number;
     createdTime: string;
     modifiedTime: string;
     fileId: number;
