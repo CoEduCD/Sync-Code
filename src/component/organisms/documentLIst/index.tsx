@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './styles.module.scss'
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { user_id } from '@/recoil/userId';
-import { getUserFilesList } from '@/api/file/api';
+import { deleteFile, getUserFilesList } from '@/api/file/api';
 import './Table.scss'
 import { CodeFile } from '@/@type/file/interface';
 import { useRouter } from 'next/navigation';
@@ -21,7 +21,7 @@ const DocumentList = ()=>{
         } 
     },[userId])
     
-    const headerArray = ["형식", "작성자", "권한", "파일명", "최종 수정 날짜", "문서 생성 날짜"]
+    const headerArray = ["형식", "작성자", "권한", "파일명", "최종 수정 날짜", "문서 생성 날짜", ""]
     return(
     <div className={styles.container}>
             <table className="user-table">
@@ -37,10 +37,6 @@ const DocumentList = ()=>{
                 fileList.map((item)=>
                 <tr 
                     key={item.fileId} 
-                    onClick={async() => {
-                        Promise.all([setCurrentFileMode("modify"),
-                        setCurrentFileInfo(item),]).then(()=>router.push(`file/${item.language}/${item.fileHash}`));
-                    }}
                 >
                         <td>{item.language}</td>
                         <td>{item.role}</td>
@@ -48,6 +44,23 @@ const DocumentList = ()=>{
                         <td>{item.fileName}</td>
                         <td>{item.modifiedTime.substring(0,10)}</td>
                         <td>{item.createdTime.substring(0,10)}</td>
+                        <td>
+                            <button
+                             className={styles.deleteButton}
+                             onClick={async() => {
+                                Promise.all([setCurrentFileMode("modify"),
+                                setCurrentFileInfo(item),]).then(()=>router.push(`file/${item.language}/${item.fileHash}`));
+                            }}
+                            >
+                            수정
+                            </button>
+                            <button
+                             className={styles.deleteButton}
+                             onClick = {()=>deleteFile(item.fileId)}
+                            >
+                            삭제
+                            </button>
+                        </td>
                 </tr>)
             }
         </tbody>

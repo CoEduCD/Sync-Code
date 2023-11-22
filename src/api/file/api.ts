@@ -39,3 +39,17 @@ export const modifyFileContents = async (fileInfo: CodeFile, codeData: string): 
     console.log(e);
   }
 }
+
+
+export const deleteFile = async (fileId: number): Promise<void> => {
+  try {
+    let data = {
+      "file_id" : fileId
+    }
+    const res = await fetchFromApi('DELETE', `/file/delete`, data);
+    console.log(res.data);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
