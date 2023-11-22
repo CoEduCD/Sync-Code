@@ -1,17 +1,7 @@
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/component/organisms/header/styles.module.scss ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-.styles_container__FDe4c {
-  width: 100%;
-  height: 15%;
-  display: flex;
-  margin-bottom: 1px;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
-}
-
-.styles_loginBox__R0yOU {
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/component/molcules/loginBox/styles.module.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_loginBox__8nVmN {
   position: relative;
   font-size: 15px;
   margin-right: 20px;
@@ -25,11 +15,11 @@
   border-color: rgba(0, 0, 0, 0.25);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
-.styles_loginBox__R0yOU span {
+.styles_loginBox__8nVmN span {
   font-weight: 400;
 }
 
-.styles_userBox__IKDFp {
+.styles_userBox__Vi5Y1 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,15 +38,35 @@
   border-color: lightgrey;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
-.styles_userBox__IKDFp span {
+.styles_userBox__Vi5Y1 span {
   font-weight: 400;
 }
 
-.styles_text__GX0Y5 {
+.styles_text__p7Mnk {
   font-size: 23px;
   font-weight: 500;
   margin: 30px;
   color: black;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/component/organisms/fileHeader/styles.module.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_container__I1Wwy {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  margin-bottom: 1px;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.styles_leftContainer__dj5YS {
+  display: flex;
+}
+
+.styles_rightContainer__DWoaK {
+  display: flex;
 }
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/component/organisms/chatting/styles.module.scss ***!
