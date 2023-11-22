@@ -7,12 +7,10 @@ import { CodeEditPage } from '@/component/template/code-editor'
 
 export default function EditPage() {
   return (
-    <RecoilRoot>
       <div style={{width: "100vw", height: "100vh", backgroundColor:'white', display:'flex',flexDirection:'column'}}>
         <Header/> 
         <CodeEditPage/>
       </div>
-    </RecoilRoot>
   )
 }
  

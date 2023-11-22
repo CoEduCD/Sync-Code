@@ -10,17 +10,18 @@ import Link from 'next/link';
 const Header = ()=>{
     const { data: session } = useSession();
     const [showUserBox, setShowUserBox] = useState<boolean>(false);
-    const [onLogin, setOnLogin] = useState<boolean>(false);
     const [userId, setUserId] = useRecoilState(user_id);
     useEffect(()=>{
         if (session){
             postUserLoginInfo(session, setUserId);
         }
-    },[onLogin])
+    },[session])
     
     const handleLogin = ()=>{
-        setOnLogin(!onLogin);
         signIn("google", {callbackUrl: "/" });
+    }
+    const handleLogout= ()=>{
+        signOut()
     }
     return(
     <div className={styles.container}>
@@ -58,7 +59,7 @@ const Header = ()=>{
                             alt="유저이미지"
                         />
                         <div style={{fontSize: 13, marginTop: 5}}>{session.user?.email}</div>
-                        <div onClick={()=>signOut()} style={{marginTop:5, fontWeight: 500}}>로그아웃</div> 
+                        <div onClick={()=>handleLogout()} style={{marginTop:5, fontWeight: 500}}>로그아웃</div> 
                     </div>
                 }
             </>:

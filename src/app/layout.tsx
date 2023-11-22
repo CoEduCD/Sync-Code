@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import React from 'react';
 import Provider from './Provider';
-import { RecoilRoot } from 'recoil';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -19,9 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider>
+          <Provider>
             {children}
-        </Provider>
+          </Provider>
       </body>
     </html>
   )

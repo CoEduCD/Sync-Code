@@ -10,7 +10,6 @@ export const postUserLoginInfo = async (session: Session, setUserId:SetterOrUpda
     try {
       const res= await fetchFromApi('POST', '/user', data);
       setUserId(res.data)
-      console.log(data)
     } catch (e) {
       console.log(e);
     }

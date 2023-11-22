@@ -1,6 +1,7 @@
 // Provider.tsx
 'use client';
 import { SessionProvider } from "next-auth/react"
+import { RecoilRoot } from "recoil";
 
 interface Props {
   children: React.ReactNode
@@ -8,9 +9,11 @@ interface Props {
 
 function Provider({ children }: Props) {
   return (
-    <SessionProvider>
-      {children}
-    </SessionProvider>
+      <SessionProvider>
+          <RecoilRoot>
+        {children}
+        </RecoilRoot>
+      </SessionProvider>
   )
 }
 
