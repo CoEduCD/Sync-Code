@@ -14,8 +14,8 @@ export const CodeEditPage = ()=>{
     const [currentFileMode, setCurrentFileMode] = useRecoilState(fileMode);
     const [codeData, setCodeData] = useState<string>("");
     useEffect(()=>{
-        if (typeof userId === "number"&&currentFileMode==="create"){
-            createNewFile(Number(userId), path[2],path[3])
+        if (currentFileMode==="create"){
+            createNewFile(userId, path[2],path[3])
         } 
     },[userId])
     return(

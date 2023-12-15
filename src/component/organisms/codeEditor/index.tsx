@@ -13,15 +13,16 @@ interface CodeEditorProps {
     setCodeData: React.Dispatch<React.SetStateAction<string>>
 }
 export const CodeEditor = ({codeData, setCodeData}:CodeEditorProps)=>{
+    const userId = useRecoilValue(user_id)
     const [currentFileInfo, setCurrentFileInfo] = useRecoilState(fileInfo);
     const [currentFileMode, setCurrentFileMode] = useRecoilState(fileMode);
     const path = usePathname().split('/');
     const debouncedCode = useDebounce(codeData, 300);
     useEffect(()=>{
-        if (currentFileMode === "modify" && currentFileInfo!==undefined){
-            modifyFileContents(currentFileInfo, codeData)
-            console.log(debouncedCode)
+        if (currentFileMode === "modify" && currentFileInfo!==undefined&&debouncedCode.length>0){
+            modifyFileContents(userId, currentFileInfo, codeData)
         }
+
     },[debouncedCode])
     return(
     <>

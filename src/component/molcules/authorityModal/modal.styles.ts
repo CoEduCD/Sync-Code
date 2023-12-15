@@ -1,8 +1,7 @@
 export const customStyles:any = {
     content: {
       width: '500px',
-      // height: '300px',
-      
+      minHeight: '370px',
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',

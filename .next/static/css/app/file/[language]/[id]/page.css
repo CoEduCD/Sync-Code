@@ -48,6 +48,94 @@
   margin: 30px;
   color: black;
 }
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/component/molcules/authorityModal/styles.module.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_buttonContainer__nxYDB {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.styles_button__hHIji, .styles_shareButton__PgprX, .styles_closeButton__pqWa_ {
+  width: 90px;
+  height: 40px;
+  border: 1px solid;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.styles_closeButton__pqWa_ {
+  border-color: black;
+  background-color: black;
+  color: white;
+}
+
+.styles_shareButton__PgprX {
+  background-color: white;
+  color: rgb(25, 73, 201);
+  border-color: black;
+}
+
+.styles_fileName__rgw2v {
+  color: black;
+  width: 100%;
+}
+.styles_fileName__rgw2v span {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0 10px;
+}
+
+.styles_container__zIlmm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  align-items: center;
+}
+
+.styles_addContainer__ttEq7 {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.styles_addButton__LmPZ7 {
+  width: 15%;
+  margin: 20px 0;
+  color: white;
+  background-color: rgb(25, 73, 201);
+  border: 0px;
+  border-radius: 5px;
+}
+
+.styles_addEmail__FagAO {
+  width: 80%;
+  height: 40px;
+  background-color: white;
+  color: grey;
+  font-size: 13px;
+  border: 1px solid;
+  border-color: rgb(25, 73, 201);
+  border-radius: 5px;
+  padding-left: 15px;
+  margin: 20px 0;
+}
+
+.styles_accessList__qBoe2 {
+  color: black;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.styles_accessListContainer__5TVh2 {
+  min-height: 150px;
+  width: 100%;
+  margin-bottom: 10px;
+}
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/component/organisms/fileHeader/styles.module.scss ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -63,10 +151,30 @@
 
 .styles_leftContainer__dj5YS {
   display: flex;
+  align-items: center;
 }
 
 .styles_rightContainer__DWoaK {
   display: flex;
+}
+
+.styles_shareButton__7DLFx {
+  width: 100px;
+  height: 40px;
+  border: 1px solid;
+  border-radius: 15px;
+}
+
+.styles_fileName__rp1QU {
+  background-color: white;
+  width: 300px;
+  height: 40px;
+  border: 1px solid;
+  border-color: lightgrey;
+  border-radius: 5px;
+  margin: 5px 0 0 15px;
+  color: black;
+  padding-left: 20px;
 }
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/component/organisms/chatting/styles.module.scss ***!

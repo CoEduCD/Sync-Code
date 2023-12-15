@@ -11,8 +11,27 @@
 
 .leftContainer{
     display: flex;
+    align-items: center;
 }
 .rightContainer{
     display: flex;
 
+}
+.shareButton{
+    width: 100px;
+    height: 40px;
+    border: 1px solid;
+    border-radius: 15px;
+}
+
+.fileName{
+    background-color: white;
+    width: 300px;
+    height: 40px;
+    border: 1px solid;
+    border-color: lightgrey;
+    border-radius: 5px;
+    margin: 5px 0 0 15px;
+    color: black;
+    padding-left: 20px;
 }

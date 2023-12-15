@@ -1,25 +1,77 @@
-export const customStyles = {
-    content: {
-      width: '500px',
-      // height: '300px',
-      
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      display:'flex',
-      padding:0,
-      position: "relative",
-      flexDirection:'column',
-      alignItems:'center',
-      backgroundColor: 'white',
-      borderRadius: '12px',
-      zIndex: 100,
-    },
-    overlay: {
-      width: '100vw',
-      height: '100vh',
-      zIndex: 100,
-      backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    },
-  };
-  
+.buttonContainer{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.button{
+    width: 90px;
+    height: 40px;
+    border: 1px solid;
+    border-radius: 20px;
+    font-size: 13.5px;
+    font-weight: 600;
+}
+.closeButton{
+    @extend .button;
+    border-color: black;
+    background-color: black;
+    color: white;
+}
+.shareButton{
+    @extend .button;
+    background-color: white;
+    color: rgb(25, 73, 201);
+    border-color:black;
+}
+.fileName{
+    span {
+        font-weight: 700;
+        font-size: 20px;
+        margin: 0 10px;
+    }
+    color:black;
+    width: 100%;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    align-items: center;
+}
+.addContainer{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.addButton{
+    width: 15%;
+    margin: 20px 0;
+    color: white;
+    background-color: rgb(25,73,201);
+    border: 0px;
+    border-radius: 5px;
+}
+.addEmail{
+    width: 80%;
+    height: 40px;
+    background-color: white;
+    color: grey;
+    font-size: 13px;
+    border: 1px solid;
+    border-color: rgb(25,73,201);
+    border-radius: 5px;
+    padding-left: 15px;
+    margin: 20px 0;
+}
+.accessList{
+    color: black;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.accessListContainer{
+    min-height: 150px;
+    width: 100%;
+    margin-bottom: 10px;
+}

@@ -1,7 +1,6 @@
 import { atom } from "recoil";
-import { UserId } from "@/@type/user/interface";
 
-export const user_id = atom<UserId>({
+export const user_id = atom<number>({
   key: "userId",
-  default: undefined,
+  default: 0,
 });

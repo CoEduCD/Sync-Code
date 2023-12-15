@@ -16,9 +16,7 @@ const DocumentList = ()=>{
     const [currentFileMode, setCurrentFileMode] = useRecoilState(fileMode); 
     const router = useRouter();
     useEffect(()=>{
-        if (typeof userId === "number"){
-            getUserFilesList(userId, setFileList);
-        } 
+        getUserFilesList(userId, setFileList);
     },[userId])
     
     const headerArray = ["형식", "작성자", "권한", "파일명", "최종 수정 날짜", "문서 생성 날짜", ""]
@@ -39,8 +37,8 @@ const DocumentList = ()=>{
                     key={item.fileId} 
                 >
                         <td>{item.language}</td>
+                        <td>{item.name}</td>           
                         <td>{item.role}</td>
-                        <td>{item.name}</td>
                         <td>{item.fileName}</td>
                         <td>{item.modifiedTime.substring(0,10)}</td>
                         <td>{item.createdTime.substring(0,10)}</td>
@@ -56,7 +54,9 @@ const DocumentList = ()=>{
                             </button>
                             <button
                              className={styles.deleteButton}
-                             onClick = {()=>deleteFile(item.fileId)}
+                             onClick = {()=>{
+                                deleteFile(userId,item.fileId);
+                                getUserFilesList(userId,setFileList)}}
                             >
                             삭제
                             </button>
