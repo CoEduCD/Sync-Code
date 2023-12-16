@@ -21,7 +21,7 @@ export const AuthorityModal = ({ modalIsOpen, setModalIsOpen}: CustomModalProps)
       const [list, setList] = useState<fileAuthority[]|undefined>();
       const userId = useRecoilValue(user_id);
       const [email, setEmail] = useState<string>("");
-
+      const [isCopied, setIsCopied] = useState<boolean>(false);
       const handleAddAuthority = async () => {
         if (currentFileInfo!== undefined){
           if (await addAuthority(currentFileInfo?.fileId, userId, email)){
@@ -29,7 +29,19 @@ export const AuthorityModal = ({ modalIsOpen, setModalIsOpen}: CustomModalProps)
           }
         }
       }
-
+      const handleCopyClick = () => {
+        // 텍스트를 클립보드에 복사하는 로직
+        const textToCopy =  window.location.href;
+        navigator.clipboard.writeText(textToCopy)
+          .then(() => {
+            alert("url이 복사되었습니다")
+            setIsCopied(true);
+            setTimeout(() => setIsCopied(false), 1500); // 1.5초 후에 메시지를 숨깁니다.
+          })
+          .catch((err) => {
+            console.error('클립보드 복사 실패:', err);
+          });
+      };
       useEffect(()=>{
         if (currentFileInfo!== undefined) {
           getAuthority(currentFileInfo?.fileId, setList)
@@ -69,6 +81,7 @@ export const AuthorityModal = ({ modalIsOpen, setModalIsOpen}: CustomModalProps)
             </div>        
             <div className={styles.buttonContainer}>
                  <button 
+                    onClick={()=>handleCopyClick()}
                     className={styles.shareButton}
                   >
                     링크 복사
