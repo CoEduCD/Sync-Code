@@ -36,14 +36,14 @@ export const modifyFileContents = async (userId: number,fileInfo: CodeFile, code
       "fileDetail": codeData
     }
     const res = await fetchFromApi('PATCH', `/file/edit`, data);
-    console.log(res.data);
+    console.log(res.data);    
   } catch (e) {
     console.log(e);
   }
 }
 
 
-export const modifyFileName = async (userId: number,fileInfo: CodeFile, name: string): Promise<void> => {
+export const modifyFileName = async (userId: number,fileInfo: CodeFile, name: string): Promise<boolean> => {
   try {
     let data = {
       "userId": userId,
@@ -54,13 +54,15 @@ export const modifyFileName = async (userId: number,fileInfo: CodeFile, name: st
     }
     const res = await fetchFromApi('PATCH', `/file/edit`, data);
     console.log(res.data);
+    return true;
   } catch (e) {
     console.log(e);
+    return false;
   }
 }
 
 
-export const deleteFile = async (userId: number,fileId: number,): Promise<void> => {
+export const deleteFile = async (userId: number,fileId: number,): Promise<boolean> => {
   try {
     let data = {
       "userId" : userId,
@@ -68,8 +70,10 @@ export const deleteFile = async (userId: number,fileId: number,): Promise<void> 
     }
     const res = await fetchFromApi('DELETE', `/file/delete`, data);
     console.log(res.data);
+    return true;
   } catch (e) {
     console.log(e);
+    return false;
   }
 }
 

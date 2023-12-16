@@ -16,12 +16,17 @@ const FileHeader = ()=>{
     const [fileName, setFileName] = useState<string>("");
     const debouncedName = useDebounce(fileName, 500);
     const userId = useRecoilValue(user_id)
-    useEffect(()=>{
-        if (currentFileInfo!==undefined ){
-            modifyFileName(userId, currentFileInfo, debouncedName)
-        }
-    }
-    ,[debouncedName])
+    useEffect(() => {
+        const modifyFileNameAsync = async () => {
+          if (currentFileInfo !== undefined) {
+            if (await modifyFileName(userId, currentFileInfo, debouncedName)) {
+                setCurrentFileInfo({ ...currentFileInfo, fileName: debouncedName });
+            }
+          }
+        };
+      
+        modifyFileNameAsync();
+      }, [debouncedName]);
     useEffect(()=>{
         if (currentFileInfo!==undefined ){
             setFileName(currentFileInfo?.fileName)

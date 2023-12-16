@@ -5,7 +5,9 @@ import styles from './styles.module.scss'
 import { useRecoilState, useRecoilValue } from "recoil";
 import { fileInfo } from "@/recoil/fileInfo";
 import { user_id } from "@/recoil/userId";
-import { addAuthority, deleteAuthority, getAuthority, modifyAuthority } from "@/api/auuthority/api";
+import { addAuthority, deleteAuthority, getAuthority, modifyAuthority } from "@/api/authority/api";
+import { fileAuthority } from "@/@type/authority/interface";
+import { AccessUserBox } from "../accessUserBox";
 interface CustomModalProps {
     modalIsOpen: boolean;
     setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -16,21 +18,24 @@ export const AuthorityModal = ({ modalIsOpen, setModalIsOpen}: CustomModalProps)
         setModalIsOpen(false);
       };
       const [currentFileInfo, setCurrentFileInfo] = useRecoilState(fileInfo);
-      const userId = useRecoilValue(user_id)
+      const [list, setList] = useState<fileAuthority[]|undefined>();
+      const userId = useRecoilValue(user_id);
       const [email, setEmail] = useState<string>("");
+
       const handleAddAuthority = async () => {
         if (currentFileInfo!== undefined){
           if (await addAuthority(currentFileInfo?.fileId, userId, email)){
-            alert("VIEWER 권한이 추가되었습니다.")
+            getAuthority(currentFileInfo?.fileId, setList)
           }
         }
       }
+
       useEffect(()=>{
-        if (currentFileInfo!== undefined){
-          getAuthority(currentFileInfo?.fileId)
-          modifyAuthority(1,currentFileInfo?.fileId,"EDITOR", 2)
+        if (currentFileInfo!== undefined) {
+          getAuthority(currentFileInfo?.fileId, setList)
         }
       },[])
+
     return(
     modalIsOpen && 
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="확인">
@@ -55,11 +60,15 @@ export const AuthorityModal = ({ modalIsOpen, setModalIsOpen}: CustomModalProps)
             </div>
             <div className={styles.accessList}>엑세스 권한이 있는 사용자</div> 
             <div className={styles.accessListContainer}>
-              
+              {
+                list!==undefined && list.map(
+                (item)=>
+                  <AccessUserBox user={item} setUser={setList} key={item.userId}/>
+                )
+              }
             </div>        
             <div className={styles.buttonContainer}>
                  <button 
-                    onClick={()=>setModalIsOpen(false)}
                     className={styles.shareButton}
                   >
                     링크 복사

@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+.email{
+    color: grey;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.name{
+    color: black;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.selectBox{
+    width: 80px;
+    height: 32px;
+    text-align: center;
+}
