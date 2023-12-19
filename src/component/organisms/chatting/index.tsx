@@ -47,6 +47,7 @@ export const Chatting = ({ socket, username, roomId }: any)=>{
         endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
     },[chat])
 
+
     return(
         <div className={styles.container}>
         <div className={styles.chat_border}>

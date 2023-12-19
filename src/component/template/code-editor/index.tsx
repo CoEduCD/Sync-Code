@@ -25,14 +25,14 @@ export const CodeEditPage = ()=>{
         } 
     },[userId])
     var socket: any;
-    socket = io("http://localhost:8080") 
+    socket = io("http://localhost:8000") 
 
     useEffect(()=>{
-        if (userName !== "" && currentFileInfo !== undefined) {
+        if (currentFileInfo !== undefined) {
             socket.emit("join_room", currentFileInfo.fileId);
             setShowChat(true);
           } else {
-            alert("Please fill in Username and Room Id");
+            console.log("현재 파일 정보가 없습니다")
           }
         ;
     },[currentFileInfo])
