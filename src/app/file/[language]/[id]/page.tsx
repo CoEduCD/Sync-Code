@@ -17,7 +17,6 @@ export default function EditPage() {
   const [currentFileMode, setCurrentFileMode] = useRecoilState(fileMode);
   const [list, setList] = useRecoilState(fileList);
   const userId = useRecoilValue(user_id)
-
   useEffect(()=>{
     if (currentFileInfo!== undefined) {
       getAuthority(currentFileInfo?.fileId, setList)

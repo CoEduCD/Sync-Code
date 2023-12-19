@@ -1,6 +1,7 @@
 import { CodeFile } from "@/@type/file/interface";
 import { fetchFromApi } from "@/utils/axios";
-export const createNewFile = async (userId:number, language:string, fileHash: string): Promise<void> => {
+import { SetterOrUpdater } from "recoil";
+export const createNewFile = async (userId:number, language:string, fileHash: string, setFileInfo:SetterOrUpdater<CodeFile | undefined>): Promise<void> => {
     try {
     let data = {
           "userId": userId,
@@ -10,8 +11,10 @@ export const createNewFile = async (userId:number, language:string, fileHash: st
           "fileHash": fileHash,
         }
       const res = await fetchFromApi('POST', '/file/create', data);
-      console.log("createFile")
-      console.log(res.data)
+      let copyData = res.data;
+      copyData.fileId = copyData.id;
+      delete  copyData.id;
+      setFileInfo(copyData)
     } catch (e) {
       console.log(e);
     }

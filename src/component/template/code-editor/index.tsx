@@ -7,19 +7,39 @@ import { fileMode } from '@/recoil/fileMode'
 import { Chatting } from '@/component/organisms/chatting'
 import { createNewFile } from '@/api/file/api'
 import { CodeEditor } from '@/component/organisms/codeEditor'
+import { io } from 'socket.io-client'
+import { fileInfo } from '@/recoil/fileInfo'
+import { user_name } from '@/recoil/userName'
 export const CodeEditPage = ()=>{
     const path = usePathname().split('/');
     const userId = useRecoilValue(user_id);
+    const userName = useRecoilValue(user_name)
+
     const [currentFileMode, setCurrentFileMode] = useRecoilState(fileMode);
+    const [currentFileInfo, setCurrentFileInfo] = useRecoilState(fileInfo);
     const [codeData, setCodeData] = useState<string>("");
+    const [showChat, setShowChat] = useState<boolean>(false);
     useEffect(()=>{
         if (currentFileMode==="create"){
-            createNewFile(userId, path[2],path[3])
+            createNewFile(userId, path[2],path[3], setCurrentFileInfo)
         } 
     },[userId])
+    var socket: any;
+    socket = io("http://localhost:8080") 
+
+    useEffect(()=>{
+        if (userName !== "" && currentFileInfo !== undefined) {
+            socket.emit("join_room", currentFileInfo.fileId);
+            setShowChat(true);
+          } else {
+            alert("Please fill in Username and Room Id");
+          }
+        ;
+    },[currentFileInfo])
+
     return(
     <div style={{width: "100vw", height: '85vh', paddingTop: 10, backgroundColor:'black', display:'flex'}}>
         <CodeEditor codeData={codeData} setCodeData={setCodeData}/>
-        <Chatting/>
+       {showChat && <Chatting socket={socket} roomId={currentFileInfo?.fileId} username={userName}/> }
     </div>)
 }

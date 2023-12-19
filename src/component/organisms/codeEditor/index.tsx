@@ -19,7 +19,7 @@ export const CodeEditor = ({codeData, setCodeData}:CodeEditorProps)=>{
     const path = usePathname().split('/');
     const debouncedCode = useDebounce(codeData, 300);
     useEffect(()=>{
-        if (currentFileMode === "modify" && currentFileInfo!==undefined&&debouncedCode.length>0){
+        if (currentFileMode === "modify" && currentFileInfo!==undefined && codeData.length>0){
             modifyFileContents(userId, currentFileInfo, codeData)
         }
 

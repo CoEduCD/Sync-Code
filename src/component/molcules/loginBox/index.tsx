@@ -6,13 +6,15 @@ import { postUserLoginInfo } from '@/api/user/api';
 import { user_id } from '@/recoil/userId';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { useRecoilState } from 'recoil';
+import { user_name } from '@/recoil/userName';
 export const LoginBox = ()=>{
     const { data: session } = useSession();
     const [showUserBox, setShowUserBox] = useState<boolean>(false);
     const [userId, setUserId] = useRecoilState(user_id);
+    const [userName, setUserName] = useRecoilState(user_name);
     useEffect(()=>{
         if (session){
-            postUserLoginInfo(session, setUserId);
+            postUserLoginInfo(session, setUserId, setUserName);
         }
     },[session])
     
