@@ -1,7 +1,6 @@
-import { UserId } from "@/@type/user/interface";
 
 const crypto = require('crypto');
-export function generateFileIdentifier(userId: UserId, creationDate:Date) {
+export function generateFileIdentifier(userId: number, creationDate:Date) {
     const dataToHash = String(userId) + creationDate.toString();
   
     const sha256Hash = crypto.createHash('sha256');

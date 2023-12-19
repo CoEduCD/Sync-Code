@@ -2,8 +2,24 @@
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/component/organisms/chatting/styles.module.scss ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 .styles_image__Go2Y_ {
-  position: relative;
-  transform: translate(22.5vw, 75.2vh);
+  position: fixed;
+  bottom: 2.5rem;
+  right: 4.2em;
+}
+
+.styles_input__JASLk {
+  position: absolute;
+  background-color: white;
+  color: black;
+  border: 2px solid;
+  border-radius: 20px;
+  border-color: #E3E3E3;
+  padding-left: 10px;
+  bottom: 20px;
+  left: 0px;
+  width: 90%;
+  height: 40px;
+  transform: translate(5%, 0);
 }
 
 .styles_chat_div__k_2cw {

@@ -17,8 +17,7 @@ export const Chatting = ({ socket, username, roomId }: any)=>{
     const [currentMsg, setCurrentMsg] = useState("");
     const [chat, setChat] = useState<IMsgDataTypes[]>([]);
     const [isConnected, setIsConnected]  = useState<boolean>(false);
-    const sendData = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const sendData = async () => {
         if (currentMsg !== "") {
         const msgData: IMsgDataTypes = {
             roomId,
@@ -71,18 +70,31 @@ export const Chatting = ({ socket, username, roomId }: any)=>{
                 </div>
             ))}
             </div>
-            <div>
-            <form onSubmit={(e) => sendData(e)}>
-                <input
-                className={styles.chat_input}
-                type="text"
-                value={currentMsg}
-                placeholder="Type your message.."
-                onChange={(e) => setCurrentMsg(e.target.value)}
-                />
-                <button className={styles.chat_button}>Send</button>
-            </form>
+                <div>
+                    <form onSubmit={(e)=>{
+                        e.preventDefault();
+                        sendData()
+                    }}>
+                        <input 
+                            className={styles.input}
+                            type="text"
+                            value={currentMsg}
+                            placeholder="Type your message.."
+                            onChange={(e) => setCurrentMsg(e.target.value)}
+                        />
+                        <Image
+                            src="/paper-plane.png"
+                            width={25}
+                            height={25}
+                            style={{ objectFit: 'cover'}}
+                            alt="Sync-Codes"
+                            className={styles.image}
+                            onClick={()=>{
+                            sendData()
+                            }}
+                        />
+                    </form>
+                </div>
             </div>
-        </div>
         </div>)
 }
