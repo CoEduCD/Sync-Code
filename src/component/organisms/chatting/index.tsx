@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import styles from './styles.module.scss';
 import { useRecoilState } from 'recoil';
@@ -17,6 +17,7 @@ export const Chatting = ({ socket, username, roomId }: any)=>{
     const [currentMsg, setCurrentMsg] = useState("");
     const [chat, setChat] = useState<IMsgDataTypes[]>([]);
     const [isConnected, setIsConnected]  = useState<boolean>(false);
+    const endOfMessagesRef = useRef(null);
     const sendData = async () => {
         if (currentMsg !== "") {
         const msgData: IMsgDataTypes = {
@@ -45,8 +46,12 @@ export const Chatting = ({ socket, username, roomId }: any)=>{
         };
     }, [socket]);
 
+    useEffect(()=>{
+        endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
+    },[chat])
+
     return(
-        <div style={{width: '28%', backgroundColor:'white', height: '82vh',borderRadius: 20, position: 'relative', color:'black'}}>
+        <div className={styles.container}>
         <div className={styles.chat_border}>
             <div>
             {chat.map(({ roomId, user, msg, time }, key) => (
@@ -64,11 +69,12 @@ export const Chatting = ({ socket, username, roomId }: any)=>{
                 >
                     {user.charAt(0)}
                 </span>
-                <h3 style={{ textAlign: user == username ? "right" : "left" }}>
+                <h3 style={{ textAlign: user == username ? "right" : "left" ,  flexWrap: 'wrap'}}>
                     {msg}
                 </h3>
                 </div>
             ))}
+            <div ref={endOfMessagesRef} />
             </div>
                 <div>
                     <form onSubmit={(e)=>{

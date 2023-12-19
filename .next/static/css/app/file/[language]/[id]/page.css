@@ -1,6 +1,15 @@
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/component/organisms/chatting/styles.module.scss ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.styles_container__Nh1Qv {
+  width: 28%;
+  background-color: white;
+  height: 82vh;
+  border-radius: 20px;
+  position: relative;
+  color: black;
+}
+
 .styles_image__Go2Y_ {
   position: fixed;
   bottom: 2.5rem;
@@ -22,24 +31,12 @@
   transform: translate(5%, 0);
 }
 
-.styles_chat_div__k_2cw {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 .styles_chat_border__thpIt {
-  border: 1px solid red;
-  padding: 5px;
-}
-
-.styles_chat_input__6EXuM {
-  height: 2rem;
-  width: 15rem;
-  padding: 5px;
+  width: 100%;
+  height: calc(100% - 65px);
+  overflow-x: hidden;
+  color: black;
+  overflow-y: auto;
 }
 
 .styles_chat_button__7sB9v {
