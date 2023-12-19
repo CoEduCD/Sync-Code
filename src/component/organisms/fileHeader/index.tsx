@@ -10,6 +10,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { modifyFileContents, modifyFileName } from '@/api/file/api';
 import { useDebounce } from '@/hooks/useDebounce';
 import { user_id } from '@/recoil/userId';
+import { Role } from '@/@type/authority/interface';
 const FileHeader = ()=>{
     const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
     const [currentFileInfo, setCurrentFileInfo] = useRecoilState(fileInfo);
@@ -53,14 +54,17 @@ const FileHeader = ()=>{
             />
         </div>
         <div className={styles.rightContainer}>
-            <Image 
+            {
+                currentFileInfo?.role === Role.ADMIN &&
+                <Image 
                 src='/shareIcon.png' 
                 width="50"
                 height="50"
                 alt="공유하기"
                 style={{margin: "0 15px"}}
                 onClick={()=>setModalIsOpen(true)}
-            />
+                />
+            }
             <AuthorityModal 
                 modalIsOpen={modalIsOpen}
                 setModalIsOpen={setModalIsOpen}

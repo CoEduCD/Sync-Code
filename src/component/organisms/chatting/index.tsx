@@ -69,7 +69,7 @@ export const Chatting = ({ socket, username, roomId }: any)=>{
                             </div>: null}
                             <div 
                                 className = {user == username ? styles.sendMessage: styles.receiveMessage}
-                            >
+                           >
                                 {msg}
                             </div>
                     </div>

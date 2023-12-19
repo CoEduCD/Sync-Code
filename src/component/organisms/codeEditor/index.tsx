@@ -1,4 +1,5 @@
 "use client"
+import { Role } from '@/@type/authority/interface';
 import { modifyFileContents } from '@/api/file/api';
 import { useDebounce } from '@/hooks/useDebounce';
 import { fileInfo } from '@/recoil/fileInfo';
@@ -19,7 +20,7 @@ export const CodeEditor = ({codeData, setCodeData}:CodeEditorProps)=>{
     const path = usePathname().split('/');
     const debouncedCode = useDebounce(codeData, 300);
     useEffect(()=>{
-        if (currentFileMode === "modify" && currentFileInfo!==undefined && codeData.length>0){
+        if (currentFileMode === "modify" && currentFileInfo!==undefined && codeData.length>0 && currentFileInfo.role !== Role.VIEWER){
             modifyFileContents(userId, currentFileInfo, codeData)
         }
 
@@ -34,7 +35,7 @@ export const CodeEditor = ({codeData, setCodeData}:CodeEditorProps)=>{
             defaultValue={currentFileInfo!==undefined?currentFileInfo.fileDetail:""}
             onChange={(value)=>{
                 if (value!==undefined) {
-                    setCodeData(value)
+                    currentFileInfo?.role !== Role.VIEWER && setCodeData(value)
                 }
             }
             }
