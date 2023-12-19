@@ -10,8 +10,8 @@ interface Props {
 function Provider({ children }: Props) {
   return (
       <SessionProvider>
-          <RecoilRoot>
-        {children}
+        <RecoilRoot>
+           {children}
         </RecoilRoot>
       </SessionProvider>
   )

@@ -8,6 +8,7 @@ import { user_id } from "@/recoil/userId";
 import { addAuthority, deleteAuthority, getAuthority, modifyAuthority } from "@/api/authority/api";
 import { fileAuthority } from "@/@type/authority/interface";
 import { AccessUserBox } from "../accessUserBox";
+import { fileList } from "@/recoil/authorityList";
 interface CustomModalProps {
     modalIsOpen: boolean;
     setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,7 +19,7 @@ export const AuthorityModal = ({ modalIsOpen, setModalIsOpen}: CustomModalProps)
         setModalIsOpen(false);
       };
       const [currentFileInfo, setCurrentFileInfo] = useRecoilState(fileInfo);
-      const [list, setList] = useState<fileAuthority[]|undefined>();
+      const [list, setList] = useRecoilState(fileList);
       const userId = useRecoilValue(user_id);
       const [email, setEmail] = useState<string>("");
       const [isCopied, setIsCopied] = useState<boolean>(false);
@@ -42,11 +43,7 @@ export const AuthorityModal = ({ modalIsOpen, setModalIsOpen}: CustomModalProps)
             console.error('클립보드 복사 실패:', err);
           });
       };
-      useEffect(()=>{
-        if (currentFileInfo!== undefined) {
-          getAuthority(currentFileInfo?.fileId, setList)
-        }
-      },[])
+
 
     return(
     modalIsOpen && 

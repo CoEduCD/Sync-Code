@@ -4,10 +4,10 @@ import { fileAuthority } from '@/@type/authority/interface'
 import { Role } from '@/@type/authority/interface'
 import { deleteAuthority, modifyAuthority } from '@/api/authority/api'
 import { user_id } from '@/recoil/userId'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { SetterOrUpdater, useRecoilState, useRecoilValue } from 'recoil'
 import { fileInfo } from '@/recoil/fileInfo'
 
-export const AccessUserBox = ({user, setUser}:{user: fileAuthority, setUser: React.Dispatch<React.SetStateAction<fileAuthority[] | undefined>>})=>{
+export const AccessUserBox = ({user, setUser}:{user: fileAuthority, setUser: SetterOrUpdater<fileAuthority[] | undefined>})=>{
     const userId = useRecoilValue(user_id)
     const [currentFileInfo, setCurrentFileInfo] = useRecoilState(fileInfo);
     const handleRoleChangeEvent = 

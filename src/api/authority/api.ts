@@ -1,6 +1,7 @@
 import { fileAuthority } from "@/@type/authority/interface";
 import { fetchFromApi } from "@/utils/axios";
-export const getAuthority = async (fileId:number, setList: React.Dispatch<React.SetStateAction<fileAuthority[]|undefined>>): Promise<void> => {
+import { SetterOrUpdater } from "recoil";
+export const getAuthority = async (fileId:number, setList: SetterOrUpdater<fileAuthority[] | undefined>): Promise<void> => {
     try {
       const res = await fetchFromApi('GET', `/file/authority/${fileId}`);
       setList(res.data)
@@ -24,7 +25,7 @@ export const addAuthority = async (fileId: number, userId: number,email:string )
     }
 }
 
-export const modifyAuthority = async (userId: number,fileId:number, role: string, editUserId: number, setUser:React.Dispatch<React.SetStateAction<fileAuthority[] | undefined>>): Promise<void> => {
+export const modifyAuthority = async (userId: number,fileId:number, role: string, editUserId: number, setUser: SetterOrUpdater<fileAuthority[] | undefined>): Promise<void> => {
   try {
     let data = {
         "userId": userId,
@@ -41,7 +42,7 @@ export const modifyAuthority = async (userId: number,fileId:number, role: string
 
 
 
-export const deleteAuthority = async (userId: number,fileId: number,deleteUserId:number,setUser:React.Dispatch<React.SetStateAction<fileAuthority[] | undefined>>): Promise<void> => {
+export const deleteAuthority = async (userId: number,fileId: number,deleteUserId:number,setUser: SetterOrUpdater<fileAuthority[] | undefined>): Promise<void> => {
   try {
     let data = {
         "userId": userId,
