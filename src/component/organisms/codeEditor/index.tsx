@@ -22,8 +22,8 @@ export const CodeEditor = ({ codeData, setCodeData }: CodeEditorProps) => {
     const [currentFileMode, setCurrentFileMode] = useRecoilState(fileMode);
     const [doc,] = useState(new yorkie.Document('file', currentFileInfo?.fileHash));
     const path = usePathname().split('/');
-    const debouncedCode = useDebounce(codeData, 200);
-    // const debouncedSyncCode = useDebounce(codeData, 0);
+    const debouncedCode = useDebounce(codeData, 300);
+    const debouncedSyncCode = useDebounce(codeData, 0);
     useEffect(() => {
         async function attachDoc() {
           // 01. create client with RPCAddr(envoy) then activate it.
@@ -53,15 +53,23 @@ export const CodeEditor = ({ codeData, setCodeData }: CodeEditorProps) => {
         attachDoc();
       }, [doc]);
 
+    // useEffect(() => {
+    //     if (currentFileInfo !== undefined && codeData.length > 0  && currentFileInfo.role !== Role.VIEWER) {
+    //         // doc.update((root)=>{
+    //         //     root['contents']= codeData;
+    //         // });
+    //         modifyFileContents(userId, currentFileInfo, debouncedCode);
+    //     }
+    // }, [debouncedCode]);
+
     useEffect(() => {
-        if (currentFileMode === "modify" && currentFileInfo !== undefined && currentFileInfo.role !== Role.VIEWER) {
+        if (currentFileInfo !== undefined && codeData.length > 0  && currentFileInfo.role !== Role.VIEWER) {
             doc.update((root)=>{
                 root['contents']= codeData;
             });
             // modifyFileContents(userId, currentFileInfo, codeData);
         }
     }, [codeData]);
-
     // useEffect(()=>{
     //     if (currentFileMode === "modify" && currentFileInfo !== undefined && codeData.length > 0 && currentFileInfo.role !== Role.VIEWER) {
     //         doc.update((root)=>{
@@ -83,12 +91,13 @@ export const CodeEditor = ({ codeData, setCodeData }: CodeEditorProps) => {
                 }}
                 theme='vs-dark'
                 options={{
+                    
                     // minimap: {
                     //     enabled: true,
                     // },
                     fontSize: 15,
-                    // wordWrap: "on",
                 }}
+                
             />
     );
 }

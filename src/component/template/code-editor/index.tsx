@@ -24,6 +24,7 @@ export const CodeEditPage = ()=>{
             createNewFile(userId, path[2],path[3], setCurrentFileInfo)
         } 
     },[userId])
+
     var socket: any;
     socket = io("http://localhost:8000") 
 
