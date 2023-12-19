@@ -33,14 +33,35 @@
 
 .styles_chat_border__thpIt {
   width: 100%;
+  margin-top: 7px;
   height: calc(100% - 65px);
   overflow-x: hidden;
   color: black;
   overflow-y: auto;
+  padding: 10px;
 }
 
-.styles_chat_button__7sB9v {
-  height: 2rem;
+.styles_message__jONIf, .styles_receiveMessage__S20Kv, .styles_sendMessage__rJpzC {
+  padding: 0px 10px;
+  max-height: 90%;
+  min-height: 30px;
+  margin: 2.5px 4px;
+  border-radius: 11px;
+  flex-wrap: wrap;
+  line-height: 30px;
+  font-size: 13px;
+}
+
+.styles_sendMessage__rJpzC {
+  background-color: #E9E9E9;
+  text-align: right;
+  color: black;
+}
+
+.styles_receiveMessage__S20Kv {
+  text-align: left;
+  background-color: rgb(18, 106, 255);
+  color: white;
 }
 
 .styles_chatProfileRight__mhzI1 {
@@ -58,16 +79,12 @@
   margin-bottom: 5px;
 }
 
-.styles_chatProfileSpan__LHzfm {
-  background-color: rgb(213, 213, 182);
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
-  border: 1px solid white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: black;
+.styles_userName__eCO5_ {
+  text-align: left;
+  color: gray;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 2.5px 12px;
 }
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/component/molcules/loginBox/styles.module.scss ***!

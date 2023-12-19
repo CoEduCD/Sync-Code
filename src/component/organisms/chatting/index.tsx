@@ -2,8 +2,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import styles from './styles.module.scss';
-import { useRecoilState } from 'recoil';
-import { fileInfo } from '@/recoil/fileInfo';
 
 interface IMsgDataTypes {
     roomId: string | number;
@@ -13,11 +11,10 @@ interface IMsgDataTypes {
 }
 
 export const Chatting = ({ socket, username, roomId }: any)=>{
-    const [currentFileInfo, setCurrentFileInfo] = useRecoilState(fileInfo);
     const [currentMsg, setCurrentMsg] = useState("");
     const [chat, setChat] = useState<IMsgDataTypes[]>([]);
     const [isConnected, setIsConnected]  = useState<boolean>(false);
-    const endOfMessagesRef = useRef(null);
+    const endOfMessagesRef = useRef<any>(null);
     const sendData = async () => {
         if (currentMsg !== "") {
         const msgData: IMsgDataTypes = {
@@ -63,15 +60,19 @@ export const Chatting = ({ socket, username, roomId }: any)=>{
                     : styles.chatProfileLeft
                 }
                 >
-                <span
-                    className={styles.chatProfileSpan}
-                    style={{ textAlign: user == username ? "right" : "left" }}
-                >
-                    {user.charAt(0)}
-                </span>
-                <h3 style={{ textAlign: user == username ? "right" : "left" ,  flexWrap: 'wrap'}}>
-                    {msg}
-                </h3>
+                    <div>
+                        {user !== username ?
+                            <div
+                                className={styles.userName}
+                            >
+                                {user}
+                            </div>: null}
+                            <div 
+                                className = {user == username ? styles.sendMessage: styles.receiveMessage}
+                            >
+                                {msg}
+                            </div>
+                    </div>
                 </div>
             ))}
             <div ref={endOfMessagesRef} />
